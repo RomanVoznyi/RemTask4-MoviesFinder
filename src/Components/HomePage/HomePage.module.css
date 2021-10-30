@@ -1,0 +1,35 @@
+.pageTitle {
+  text-align: left;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.moviesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: -5px;
+}
+
+.moviesItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  margin: 5px;
+  padding: 2px;
+  width: 200px;
+  min-height: 200px;
+  border-radius: 5px;
+  background-color: #7a2048;
+  box-shadow: 2px 2px 3px rgba(122, 32, 72, 0.5);
+  cursor: pointer;
+
+  transform: scale(1);
+  transition: transform 250ms linear;
+}
+
+.moviesItem:hover,
+.moviesItem:focus {
+  transform: scale(1.03);
+}

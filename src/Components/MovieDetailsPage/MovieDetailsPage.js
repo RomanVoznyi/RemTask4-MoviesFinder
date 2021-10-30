@@ -1,27 +1,121 @@
-import React, { Suspense } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import React, { Suspense, useEffect, useState } from 'react';
+import {
+  Switch,
+  Route,
+  NavLink,
+  useParams,
+  useRouteMatch,
+} from 'react-router-dom';
+import {
+  getMovieInfo,
+  getCastInfo,
+  getReviewsInfo,
+} from '../../utils/apiservise';
 import styles from './MovieDetailsPage.module.css';
 
 const Cast = React.lazy(() => import('../Cast'));
 const Reviews = React.lazy(() => import('../Reviews'));
 
 const MovieDetailsPage = () => {
+  const params = useParams();
+  const { url } = useRouteMatch();
+  const [error, setError] = useState('');
+  const [movieInfo, setMovieInfo] = useState('');
+  const type = url.split('/')[1];
+
+  useEffect(() => {
+    getMovieInfo({ movie_id: params.movieId, type })
+      .then(res => setMovieInfo(res))
+      .catch(error => setError(error));
+  }, [params.movieId]);
+
+  const handleClick = () => {};
+
   return (
     <>
-      <h2>Hello movie detail page</h2>;
-      <NavLink to="/movies/:movieId/cast">Cast</NavLink>
-      <NavLink to="/movies/:movieId/reviews">Reviews</NavLink>
-      <Suspense fallback={<div>Загрузка...</div>}>
-        <Switch>
-          <Route path="/movies/:movieId/cast">
-            <Cast />
-          </Route>
-          <Route path="/movies/:movieId/reviews">
-            <Reviews />
-          </Route>
-          <Redirect to="/" />
-        </Switch>
-      </Suspense>
+      {movieInfo && (
+        <div className={styles.movieCard}>
+          <h2 className={styles.title}>{movieInfo.title || movieInfo.name}</h2>
+          <div className={styles.movieBox}>
+            <img
+              className={styles.poster}
+              src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}
+              alt="poster"
+            />
+            <div className={styles.descriprion}>
+              <span>Original title:</span>
+              <span className={styles.special}>
+                {movieInfo.original_title || movieInfo.original_name}
+              </span>
+              <span>Genres:</span>
+              <span className={styles.article}>
+                {movieInfo.genres.map(el => el.name).join(', ')}
+              </span>
+              <span>Date of release:</span>
+              <span className={styles.article}>
+                {movieInfo.release_date || movieInfo.first_air_date}
+              </span>
+              {type === 'tv' && (
+                <>
+                  <span>Seasons / Episodes: </span>
+                  <span className={styles.article}>
+                    {movieInfo.number_of_seasons}/{movieInfo.number_of_episodes}
+                  </span>
+                </>
+              )}
+              <span>{type === 'tv' ? 'Episod runtime:' : 'Runtime:'}</span>
+              <span className={styles.article}>
+                {type === 'tv'
+                  ? movieInfo.episode_run_time[0]
+                  : movieInfo.runtime}{' '}
+                minutes
+              </span>
+              <span>Raiting:</span>
+              <span className={styles.special}>{movieInfo.vote_average}</span>
+              <span>Total votes:</span>
+              <span className={styles.article}>{movieInfo.vote_count}</span>
+              <span>Overview:</span>
+              <span className={styles.article}>{movieInfo.overview}</span>
+            </div>
+          </div>
+          <div className={styles.addInfo}>
+            <NavLink
+              to={`${url}/cast`}
+              className={styles.navlink}
+              activeClassName={styles.activeNavlink}
+            >
+              Cast
+            </NavLink>
+            <NavLink
+              to={`${url}/reviews`}
+              className={styles.navlink}
+              activeClassName={styles.activeNavlink}
+            >
+              Reviews
+            </NavLink>
+          </div>
+        </div>
+      )}
+      <div className="addDetails">
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path={'/movies/:movieId/cast' || '/tv/:movieId/cast'} exact>
+              <Cast />
+            </Route>
+            <Route
+              path={'/movies/:movieId/reviews' || '/tv/:movieId/reviews'}
+              exact
+            >
+              <Reviews />
+            </Route>
+          </Switch>
+        </Suspense>
+      </div>
+      {error && (
+        <h2 className={styles.pageTitle}>
+          Woops. Something went wrong - {error}
+        </h2>
+      )}
     </>
   );
 };

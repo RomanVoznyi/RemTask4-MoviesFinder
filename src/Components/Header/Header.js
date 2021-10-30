@@ -3,11 +3,23 @@ import styles from './Header.module.css';
 
 const Header = () => {
   return (
-    <header>
-      <NavLink to="/" exact>
+    <header className={styles.header}>
+      <NavLink
+        to="/"
+        exact
+        className={styles.navlink}
+        activeClassName={styles.activeNavlink}
+      >
         Home
       </NavLink>
-      <NavLink to="/movies">Movies</NavLink>
+      <NavLink
+        to="/movies"
+        exact
+        className={styles.navlink}
+        activeClassName={styles.activeNavlink}
+      >
+        Movies
+      </NavLink>
     </header>
   );
 };

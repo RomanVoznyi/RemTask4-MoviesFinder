@@ -1,3 +1,9 @@
+/*Палитра
+#408ec6 - blue
+#7a2048 - bordo
+#1e2761 - indigo
+*/
+
 html {
   box-sizing: border-box;
   width: 100vw;
@@ -12,10 +18,11 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  color: #212121;
-  background-color: #fff;
+  padding: 0 5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  color: #ffffff;
+  background-color: #408ec6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

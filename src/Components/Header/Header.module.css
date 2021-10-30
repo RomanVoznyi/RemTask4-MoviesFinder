@@ -1,0 +1,37 @@
+.header {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #1e2761;
+  text-align: left;
+  border-radius: 0px 0px 5px 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.navlink {
+  position: relative;
+  font: inherit;
+  font-weight: 500;
+  color: #408ec6;
+  text-decoration: none;
+}
+
+.navlink:not(:last-child) {
+  margin-right: 20px;
+}
+
+.activeNavlink {
+  color: white;
+}
+
+.activeNavlink::after {
+  content: ' ';
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  border-radius: 5px;
+  background-color: #408ec6;
+}

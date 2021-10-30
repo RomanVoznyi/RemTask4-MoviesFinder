@@ -1,18 +1,24 @@
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import Header from './Components/Header';
 import './App.css';
 
-const HomePage = React.lazy(() => import('./Components/HomePage'));
-const Header = React.lazy(() => import('./Components/Header'));
-const MoviesPage = React.lazy(() => import('./Components/MoviesPage'));
-const MovieDetailsPage = React.lazy(() =>
-  import('./Components/MovieDetailsPage'),
+const HomePage = lazy(() =>
+  import('./Components/HomePage' /* webpackChunkName: "home-page" */),
+);
+const MoviesPage = lazy(() =>
+  import('./Components/MoviesPage' /* webpackChunkName: "MoviesPage" */),
+);
+const MovieDetailsPage = lazy(() =>
+  import(
+    './Components/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage" */
+  ),
 );
 
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={<div>Загрузка...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <Header />
         <Switch>
           <Route path="/" exact>
@@ -22,6 +28,9 @@ function App() {
             <MoviesPage />
           </Route>
           <Route path="/movies/:movieId">
+            <MovieDetailsPage />
+          </Route>
+          <Route path="/tv/:movieId">
             <MovieDetailsPage />
           </Route>
           <Redirect to="/" />

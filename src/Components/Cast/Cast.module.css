@@ -1,0 +1,39 @@
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 0 auto;
+  padding: -5px;
+}
+
+.castItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  margin: 5px;
+  padding: 2px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: #7a2048;
+  box-shadow: 2px 2px 3px rgba(122, 32, 72, 0.5);
+}
+
+.photo {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  min-height: 144px;
+  background-color: grey;
+}
+
+.name {
+  margin-bottom: 5px;
+}
+
+.character {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 1;
+  font-weight: 400;
+  color: #408ec6;
+}
