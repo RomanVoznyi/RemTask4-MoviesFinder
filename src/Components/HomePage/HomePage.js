@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getTrendMovies } from '../../utils/apiservise';
 import MovieCard from '../MovieCard';
-
 import styles from './HomePage.module.css';
 
 const HomePage = () => {

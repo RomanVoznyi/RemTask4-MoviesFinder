@@ -1,0 +1,40 @@
+.reviewList {
+  width: 50%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.reviewItem {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  column-gap: 10px;
+  row-gap: 20px;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: #7a2048;
+  box-shadow: 2px 2px 3px rgba(122, 32, 72, 0.5);
+}
+
+.avatar {
+  border-radius: 5px;
+}
+
+.description {
+  text-align: left;
+}
+
+.author,
+content {
+  margin-bottom: 5px;
+}
+
+.data {
+  font-size: 12px;
+  color: #408ec6;
+}
+
+.empty {
+  margin-bottom: 10px;
+  text-align: left;
+  color: #7a2048;
+}

@@ -27,17 +27,21 @@ const getMovieInfo = ({ movie_id, type }) => {
     )
     .then(data => data.data);
 };
-const getCastInfo = ({ movie_id }) => {
+const getCastInfo = ({ movie_id, type }) => {
   return axios
     .get(
-      `${BASE_URL}/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`,
+      `${BASE_URL}${
+        type === 'tv' ? '/tv' : '/movie'
+      }/${movie_id}/credits?api_key=${API_KEY}&language=en-US`,
     )
     .then(data => data.data);
 };
-const getReviewsInfo = ({ movie_id, page }) => {
+const getReviewsInfo = ({ movie_id, type, page = 1 }) => {
   return axios
     .get(
-      `${BASE_URL}/movie/${movie_id}/reviews?api_key=${API_KEY}&language=en-US&page=${page}`,
+      `${BASE_URL}${
+        type === 'tv' ? '/tv' : '/movie'
+      }/${movie_id}/reviews?api_key=${API_KEY}&language=en-US&page=${page}`,
     )
     .then(data => data.data);
 };

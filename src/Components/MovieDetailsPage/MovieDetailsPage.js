@@ -6,11 +6,7 @@ import {
   useParams,
   useRouteMatch,
 } from 'react-router-dom';
-import {
-  getMovieInfo,
-  getCastInfo,
-  getReviewsInfo,
-} from '../../utils/apiservise';
+import { getMovieInfo } from '../../utils/apiservise';
 import styles from './MovieDetailsPage.module.css';
 
 const Cast = React.lazy(() => import('../Cast'));
@@ -27,9 +23,7 @@ const MovieDetailsPage = () => {
     getMovieInfo({ movie_id: params.movieId, type })
       .then(res => setMovieInfo(res))
       .catch(error => setError(error));
-  }, [params.movieId]);
-
-  const handleClick = () => {};
+  }, [params, type]);
 
   return (
     <>
@@ -99,13 +93,16 @@ const MovieDetailsPage = () => {
       <div className="addDetails">
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route path={'/movies/:movieId/cast' || '/tv/:movieId/cast'} exact>
+            <Route path="/movies/:movieId/cast" exact>
               <Cast />
             </Route>
-            <Route
-              path={'/movies/:movieId/reviews' || '/tv/:movieId/reviews'}
-              exact
-            >
+            <Route path="/tv/:movieId/cast" exact>
+              <Cast />
+            </Route>
+            <Route path="/movies/:movieId/reviews" exact>
+              <Reviews />
+            </Route>
+            <Route path="/tv/:movieId/reviews" exact>
               <Reviews />
             </Route>
           </Switch>
@@ -121,6 +118,3 @@ const MovieDetailsPage = () => {
 };
 
 export default MovieDetailsPage;
-
-// /movies/:movieId/cast - компонент <Cast>, информация о актерском составе. Рендерится на странице <MovieDetailsPage>.
-// /movies/:movieId/reviews - компонент <Reviews>, информация об обзорах. Рендерится на странице <MovieDetailsPage>.
