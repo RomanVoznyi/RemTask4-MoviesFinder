@@ -19,8 +19,14 @@ const Reviews = () => {
       .catch(error => setError(error.message));
   }, [params, type]);
 
+  const checkUrl = url => {
+    return url.toLowerCase().includes('http')
+      ? url.slice(url.indexOf('h'))
+      : `https://image.tmdb.org/t/p/original${url}`;
+  };
+
   return (
-    <div>
+    <>
       {reviews.length > 0 ? (
         <ul className={styles.reviewList}>
           {reviews.map(el => (
@@ -28,7 +34,7 @@ const Reviews = () => {
               <img
                 src={
                   el.author_details.avatar_path
-                    ? `https://image.tmdb.org/t/p/original${el.author_details.avatar_path}`
+                    ? checkUrl(el.author_details.avatar_path)
                     : photo
                 }
                 alt="avatar"
@@ -50,16 +56,8 @@ const Reviews = () => {
           `Woops! Something went wrong - ${error}`
         </h4>
       )}
-    </div>
+    </>
   );
 };
 
 export default Reviews;
-
-// author: "Obito Uchiha"
-// author_details: {name: 'Obito Uchiha', username: 'oppai69', avatar_path: null, rating: null}
-// content: "Just totally worth it."
-// created_at: "2021-09-22T09:30:42.406Z"
-// id: "614af7c2d2c0c10028ec881c"
-// updated_at: "2021-09-30T16:22:11.970Z"
-// url: "https://www.themoviedb.org/review/614af7c2d2c0c10028ec881c"

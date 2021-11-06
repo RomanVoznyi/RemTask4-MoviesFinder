@@ -1,7 +1,6 @@
 .reviewList {
-  width: 50%;
-  padding: 5px;
   margin-bottom: 10px;
+  padding-right: 20px;
 }
 
 .reviewItem {
@@ -15,6 +14,10 @@
   box-shadow: 2px 2px 3px rgba(122, 32, 72, 0.5);
 }
 
+.reviewItem:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 .avatar {
   border-radius: 5px;
 }
@@ -23,9 +26,13 @@
   text-align: left;
 }
 
-.author,
-content {
+.author {
   margin-bottom: 5px;
+}
+
+.content {
+  margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .data {
