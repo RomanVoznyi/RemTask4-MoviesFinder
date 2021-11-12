@@ -9,6 +9,9 @@ import {
 import { getMovieInfo } from '../../utils/apiservise';
 import styles from './MovieDetailsPage.module.css';
 
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
 const Cast = React.lazy(() => import('../Cast'));
 const Reviews = React.lazy(() => import('../Reviews'));
 
@@ -91,7 +94,11 @@ const MovieDetailsPage = () => {
         </div>
       )}
       <div className="addDetails">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+          }
+        >
           <Switch>
             <Route path="/movies/:movieId/cast" exact>
               <Cast />
