@@ -21,7 +21,7 @@ const Cast = () => {
 
   return (
     <div>
-      {castInfo.length > 0 && (
+      {castInfo.length > 0 ? (
         <ul className={styles.castList}>
           {castInfo.map(el => {
             return (
@@ -41,6 +41,8 @@ const Cast = () => {
             );
           })}
         </ul>
+      ) : (
+        <h4 className={styles.empty}>No cast available yet</h4>
       )}
       {error && (
         <h4 className={styles.error}>

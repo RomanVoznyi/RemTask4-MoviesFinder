@@ -10,7 +10,6 @@ const getTrendMovies = async ({ page }) => {
 };
 
 const getSearchList = async ({ query, page }) => {
-  console.log(query, page);
   const data = await axios.get(
     `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`,
   );
@@ -42,10 +41,18 @@ const getReviewsInfo = async ({ movie_id, type, page = 1 }) => {
   return data.data;
 };
 
+const getGenres = async () => {
+  const data = await axios.get(
+    `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`,
+  );
+  return data.data;
+};
+
 export {
   getTrendMovies,
   getSearchList,
   getMovieInfo,
   getCastInfo,
   getReviewsInfo,
+  getGenres,
 };

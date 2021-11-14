@@ -1,0 +1,87 @@
+.pageTitle {
+  text-align: left;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.searchbar {
+  position: relative;
+  display: block;
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.searchInput {
+  width: 100%;
+  height: 40px;
+  padding: 5px 66px 5px 20px;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1;
+
+  color: #408ec6;
+  outline: none;
+  border: 2px solid #7a2048;
+  border-radius: 25px;
+  box-shadow: 2px 2px 3px rgba(122, 32, 72, 0.5);
+}
+
+.findButton,
+.closeButton {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: #408ec6;
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.closeButton {
+  right: 35px;
+}
+
+.moviesList {
+  padding-right: 20px;
+  margin: 0 auto 10px;
+  padding: -5px;
+}
+
+.moviesItem {
+  min-height: 75px;
+  padding: 2px;
+  border: 1px solid #7a2048;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px rgba(122, 32, 72, 0.5);
+}
+
+.moviesItem:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.block {
+  display: inline-block;
+  padding: 2px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: 2px solid #7a2048;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 2px 2px 3px rgba(122, 32, 72, 0.5);
+}
+
+.error {
+  margin-bottom: 10px;
+  text-align: left;
+  color: #7a2048;
+}

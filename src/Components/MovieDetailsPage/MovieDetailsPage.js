@@ -7,6 +7,7 @@ import {
   useRouteMatch,
 } from 'react-router-dom';
 import { getMovieInfo } from '../../utils/apiservise';
+import noImage from '../MovieCard/no_image.jpg';
 import styles from './MovieDetailsPage.module.css';
 
 import Loader from 'react-loader-spinner';
@@ -36,7 +37,11 @@ const MovieDetailsPage = () => {
           <div className={styles.movieBox}>
             <img
               className={styles.poster}
-              src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}
+              src={
+                movieInfo.poster_path
+                  ? `https://image.tmdb.org/t/p/original${movieInfo.poster_path}`
+                  : noImage
+              }
               alt="poster"
             />
             <div className={styles.descriprion}>

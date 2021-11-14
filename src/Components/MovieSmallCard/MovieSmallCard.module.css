@@ -1,0 +1,35 @@
+.link {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font: inherit;
+  color: white;
+  text-decoration: none;
+}
+
+.poster {
+  min-width: 50px;
+  width: 50px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.descrBlock {
+  text-align: left;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-style: italic;
+  color: white;
+}
+
+.year {
+  font-size: 16px;
+  font-style: normal;
+}
+
+.article {
+  font-size: 14px;
+}

@@ -38,6 +38,9 @@
   color: #408ec6;
 }
 
-.error {
+.error,
+.empty {
+  margin-bottom: 10px;
+  text-align: left;
   color: #7a2048;
 }

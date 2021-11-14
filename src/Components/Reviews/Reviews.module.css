@@ -40,6 +40,7 @@
   color: #408ec6;
 }
 
+.error,
 .empty {
   margin-bottom: 10px;
   text-align: left;
