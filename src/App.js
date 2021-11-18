@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from './Components/Header';
+import Footer from './Components/Footer';
+import { addBackToTop } from 'vanilla-back-to-top';
 import './App.css';
 
 import Loader from 'react-loader-spinner';
@@ -19,8 +21,17 @@ const MovieDetailsPage = lazy(() =>
 );
 
 function App() {
+  addBackToTop({
+    diameter: 56,
+    innerHTML:
+      '<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',
+    backgroundColor: '#1e2761',
+    textColor: '#fff',
+  });
+
   return (
     <div className="App">
+      <Header />
       <Suspense
         fallback={
           <Loader
@@ -32,7 +43,6 @@ function App() {
           />
         }
       >
-        <Header />
         <Switch>
           <Route path="/" exact>
             <HomePage />
@@ -49,6 +59,7 @@ function App() {
           <Redirect to="/" />
         </Switch>
       </Suspense>
+      <Footer />
     </div>
   );
 }

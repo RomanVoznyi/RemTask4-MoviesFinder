@@ -5,6 +5,7 @@ import {
   NavLink,
   useParams,
   useRouteMatch,
+  useLocation,
 } from 'react-router-dom';
 import { getMovieInfo } from '../../utils/apiservise';
 import noImage from '../MovieCard/no_image.jpg';
@@ -22,6 +23,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState('');
   const [movieInfo, setMovieInfo] = useState('');
   const type = url.split('/')[1];
+  const location = useLocation();
 
   useEffect(() => {
     getMovieInfo({ movie_id: params.movieId, type })
@@ -82,14 +84,20 @@ const MovieDetailsPage = () => {
           </div>
           <div className={styles.addInfo}>
             <NavLink
-              to={`${url}/cast`}
+              to={{
+                pathname: `${url}/cast`,
+                state: { from: location },
+              }}
               className={styles.navlink}
               activeClassName={styles.activeNavlink}
             >
               Cast
             </NavLink>
             <NavLink
-              to={`${url}/reviews`}
+              to={{
+                pathname: `${url}/reviews`,
+                state: { from: location },
+              }}
               className={styles.navlink}
               activeClassName={styles.activeNavlink}
             >

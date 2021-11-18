@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import { getSearchList, getGenres } from '../../utils/apiservise';
 import MovieSmallCard from '../MovieSmallCard';
 import { Pagination } from '@mui/material';

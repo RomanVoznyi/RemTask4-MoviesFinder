@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { getTrendMovies } from '../../utils/apiservise';
 import { Pagination } from '@mui/material';
 import MovieCard from '../MovieCard';
@@ -10,6 +10,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const history = useHistory();
+  const location = useLocation();
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -22,7 +23,15 @@ const HomePage = () => {
   }, [page]);
 
   const handleClick = (id, type) => {
-    type === 'tv' ? history.push(`/tv/${id}`) : history.push(`/movies/${id}`);
+    type === 'tv'
+      ? history.push({
+          pathname: `/tv/${id}`,
+          state: { from: location },
+        })
+      : history.push({
+          pathname: `/movies/${id}`,
+          state: { from: location },
+        });
   };
 
   const handleChange = ({ target }) => {

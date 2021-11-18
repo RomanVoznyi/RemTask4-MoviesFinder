@@ -1,7 +1,8 @@
 .header {
+  position: relative;
   width: 100%;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   background-color: #1e2761;
   text-align: left;
   border-radius: 0px 0px 5px 5px;
@@ -34,4 +35,48 @@
   height: 2px;
   border-radius: 5px;
   background-color: #408ec6;
+}
+
+.buttonBox {
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  padding: 2px;
+
+  font: inherit;
+  font-size: 12px;
+  color: white;
+  background-color: #1e2761;
+  text-align: center;
+  border: 1px solid #7a2048;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(122, 32, 72, 0.5);
+  outline: none;
+  cursor: pointer;
+}
+
+.button:not(:last-child) {
+  margin-right: 5px;
+}
+
+.button:hover {
+  background-color: rgba(30, 39, 97, 0.5);
+}
+
+.btnTextBack {
+  margin-left: 5px;
+}
+
+.btnTextForw {
+  margin-right: 5px;
 }

@@ -1,8 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import noImage from './no_image.jpg';
 import styles from './MovieSmallCard.module.css';
 
 const MovieSmallCard = ({ el, genres }) => {
+  const location = useLocation();
+
   const getYear = str => {
     return str ? ` (${str.slice(0, str.indexOf('-'))})` : '';
   };
@@ -22,7 +24,13 @@ const MovieSmallCard = ({ el, genres }) => {
   };
 
   return (
-    <NavLink to={`/movies/${el.id}`} className={styles.link}>
+    <NavLink
+      to={{
+        pathname: `/movies/${el.id}`,
+        state: { from: location },
+      }}
+      className={styles.link}
+    >
       <img
         className={styles.poster}
         src={

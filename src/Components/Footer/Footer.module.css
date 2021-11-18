@@ -1,0 +1,40 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: calc(100% - 22px);
+  padding: 5px;
+  background-color: #1e2761;
+  text-align: right;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.navlink {
+  position: relative;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: #408ec6;
+  text-decoration: none;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.7);
+  }
+}
+
+.heart {
+  animation-name: heartbeat;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+  color: #ff2400;
+}
