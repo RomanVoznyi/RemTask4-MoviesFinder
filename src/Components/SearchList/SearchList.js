@@ -4,6 +4,7 @@ import MovieSmallCard from '../MovieSmallCard';
 import { Pagination } from '@mui/material';
 import { BsSearch } from 'react-icons/bs';
 import { CgClose } from 'react-icons/cg';
+import { toast } from 'react-toastify';
 import styles from './SearchList.module.css';
 
 const SearchList = () => {
@@ -49,7 +50,7 @@ const SearchList = () => {
         })
         .catch(error => setError(error.message));
     } else {
-      console.log('Type something');
+      toast.warn('Type something');
       setTotalPages(0);
       setMoviesList([]);
     }
@@ -67,7 +68,7 @@ const SearchList = () => {
   };
 
   return (
-    <section>
+    <>
       <h2 className={styles.pageTitle}>Movies finder page</h2>
       <form onSubmit={handleSubmit}>
         <label className={styles.searchbar}>
@@ -114,7 +115,7 @@ const SearchList = () => {
       {error && (
         <h2 className={styles.error}>Woops. Something went wrong - {error}</h2>
       )}
-    </section>
+    </>
   );
 };
 

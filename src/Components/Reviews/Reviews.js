@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouteMatch } from 'react-router';
 import { getReviewsInfo } from '../../utils/apiservise';
-import photo from '../Cast/NoPhoto.png';
+import photo from '../../data/photo/no_photo.png';
 import styles from './Reviews.module.css';
 
 const Reviews = () => {

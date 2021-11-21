@@ -7,8 +7,9 @@ import {
   useRouteMatch,
   useLocation,
 } from 'react-router-dom';
-import { getMovieInfo } from '../../utils/apiservise';
-import noImage from '../MovieCard/no_image.jpg';
+import { getMovieInfo, getVideo } from '../../utils/apiservise';
+import noImage from '../../data/photo/no_image.jpg';
+import noVideo from '../../data/photo/no_video.jpg';
 import styles from './MovieDetailsPage.module.css';
 
 import Loader from 'react-loader-spinner';
@@ -22,14 +23,32 @@ const MovieDetailsPage = () => {
   const { url } = useRouteMatch();
   const [error, setError] = useState('');
   const [movieInfo, setMovieInfo] = useState('');
+  const [videoInfo, setVideoInfo] = useState('');
   const type = url.split('/')[1];
   const location = useLocation();
 
   useEffect(() => {
     getMovieInfo({ movie_id: params.movieId, type })
-      .then(res => setMovieInfo(res))
+      .then(res => {
+        setMovieInfo(res);
+      })
+      .catch(error => setError(error));
+    getVideo({ movie_id: params.movieId, type })
+      .then(res => {
+        res.results.length > 0 && checkTrailer(res.results);
+      })
       .catch(error => setError(error));
   }, [params, type]);
+
+  const checkTrailer = videos => {
+    for (const video of videos) {
+      const name = video.name.toLowerCase();
+      if (name.includes('official') || name.includes('trailer')) {
+        setVideoInfo(video.key);
+        return;
+      }
+    }
+  };
 
   return (
     <>
@@ -80,6 +99,20 @@ const MovieDetailsPage = () => {
               <span className={styles.article}>{movieInfo.vote_count}</span>
               <span>Overview:</span>
               <span className={styles.article}>{movieInfo.overview}</span>
+              <span>Official trailer:</span>
+              <span className={(styles.article, styles.videoBox)}>
+                {videoInfo ? (
+                  <iframe
+                    className={styles.video}
+                    src={`https://www.youtube.com/embed/${videoInfo}`}
+                    title={videoInfo}
+                    frameBorder="0"
+                    allowFullScreen=""
+                  ></iframe>
+                ) : (
+                  <img src={noVideo} className={styles.video} alt="noVideo" />
+                )}
+              </span>
             </div>
           </div>
           <div className={styles.addInfo}>

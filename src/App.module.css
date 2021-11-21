@@ -1,0 +1,8 @@
+.app {
+  min-height: 100vh;
+  text-align: center;
+}
+
+.section {
+  min-height: calc(100vh - 122px);
+}

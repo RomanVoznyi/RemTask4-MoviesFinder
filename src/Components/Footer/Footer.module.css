@@ -1,8 +1,6 @@
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: calc(100% - 22px);
-  padding: 5px;
+.footer {  
+  width: 100%;
+  padding: 5px 20px;
   background-color: #1e2761;
   text-align: right;
   border-radius: 5px 5px 0px 0px;

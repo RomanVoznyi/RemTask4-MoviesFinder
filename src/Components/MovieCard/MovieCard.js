@@ -1,4 +1,4 @@
-import noImage from './no_image.jpg';
+import noImage from '../../data/photo/no_image.jpg';
 import styles from './MovieCard.module.css';
 
 const MovieCard = ({ el }) => {

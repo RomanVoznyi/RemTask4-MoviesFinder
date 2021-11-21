@@ -48,6 +48,15 @@ const getGenres = async () => {
   return data.data;
 };
 
+const getVideo = async ({ movie_id, type }) => {
+  const data = await axios.get(
+    `${BASE_URL}${
+      type === 'tv' ? '/tv' : '/movie'
+    }/${movie_id}/videos?api_key=${API_KEY}&language=en-US`,
+  );
+  return data.data;
+};
+
 export {
   getTrendMovies,
   getSearchList,
@@ -55,4 +64,5 @@ export {
   getCastInfo,
   getReviewsInfo,
   getGenres,
+  getVideo,
 };

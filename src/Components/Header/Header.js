@@ -8,6 +8,7 @@ const Header = () => {
   const location = useLocation();
 
   const handleClick = ({ target }) => {
+    console.log(history);
     const name =
       target.localName === 'button' ? target.name : target.parentElement.name;
     name === 'back' ? history.goBack() : history.goForward();

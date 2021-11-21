@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import noImage from './no_image.jpg';
+import noImage from '../../data/photo/no_image.jpg';
 import styles from './MovieSmallCard.module.css';
 
 const MovieSmallCard = ({ el, genres }) => {

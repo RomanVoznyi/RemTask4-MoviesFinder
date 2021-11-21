@@ -39,7 +39,7 @@ const HomePage = () => {
   };
 
   return (
-    <section className={styles.section}>
+    <>
       <h2 className={styles.pageTitle}>The daily trending list</h2>
       {movies.length > 0 && (
         <>
@@ -69,7 +69,7 @@ const HomePage = () => {
           Woops. Something went wrong - {error}
         </h2>
       )}
-    </section>
+    </>
   );
 };
 

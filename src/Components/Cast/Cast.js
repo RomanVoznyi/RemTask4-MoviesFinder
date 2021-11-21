@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useRouteMatch } from 'react-router-dom';
 import { getCastInfo } from '../../utils/apiservise';
-import photo from './NoPhoto.png';
+import photo from '../../data/photo/no_photo.png';
 import styles from './Cast.module.css';
 
 const Cast = () => {
